@@ -13,6 +13,11 @@ config TARGET_AT91SAM9260EK
 	select CPU_ARM926EJS
 	select BOARD_EARLY_INIT_F
 
+config TARGET_IPRO4
+	bool "Emerson iPro4 board"
+	select CPU_ARM926EJS
+	select BOARD_EARLY_INIT_F
+
 config TARGET_ETHERNUT5
 	bool "Ethernut5 board"
 	select CPU_ARM926EJS
@@ -180,6 +185,7 @@ config SYS_SOC
 
 source "board/atmel/at91rm9200ek/Kconfig"
 source "board/atmel/at91sam9260ek/Kconfig"
+source "board/emerson/ipro4/Kconfig"
 source "board/atmel/at91sam9261ek/Kconfig"
 source "board/atmel/at91sam9263ek/Kconfig"
 source "board/atmel/at91sam9m10g45ek/Kconfig"

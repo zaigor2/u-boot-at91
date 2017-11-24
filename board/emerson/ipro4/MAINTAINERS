@@ -1,0 +1,6 @@
+IPRO4 BOARD
+M:	Rodolfo Giometti <giometti@enneenne.com>
+S:	Maintained
+F:	board/emerson/ipro4/
+F:	include/configs/ipro4.h
+F:	configs/ipro4_nandflash_defconfig

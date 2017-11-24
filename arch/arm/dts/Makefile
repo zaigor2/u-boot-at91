@@ -334,6 +334,8 @@ dtb-$(CONFIG_TARGET_AT91SAM9260EK) += \
 	at91sam9g20ek.dtb	\
 	at91sam9g20ek_2mmc.dtb
 
+dtb-$(CONFIG_TARGET_IPRO4) += ipro4.dtb
+
 dtb-$(CONFIG_TARGET_AT91SAM9M10G45EK) += at91sam9m10g45ek.dtb
 
 dtb-$(CONFIG_TARGET_AT91SAM9X5EK) += \

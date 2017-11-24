@@ -1,0 +1,12 @@
+if TARGET_IPRO4
+
+config SYS_BOARD
+	default "ipro4"
+
+config SYS_VENDOR
+	default "emerson"
+
+config SYS_CONFIG_NAME
+	default "ipro4"
+
+endif
