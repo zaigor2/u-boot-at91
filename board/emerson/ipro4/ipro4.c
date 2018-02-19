@@ -117,9 +117,30 @@ void hw_watchdog_reset(void)
 {
 	static unsigned long long last_tick = 0;
 	static int last = 0;
+	unsigned long long timeout_sec_in_ticks;
 	unsigned long long one_sec_in_ticks = usec2ticks(1000*1000);
 	unsigned long long tick = get_ticks();
 
+#if 0
+	/* We should boot within "wdt_timeout" seconds otherwise the watchdog
+	 * shall not be refreshed!
+	 * Variable "wdt_timeout" defaults to 300s if not defined.
+	 * This function is disabled if "wdt_timeout = 0".
+	 */
+	timeout_sec_in_ticks = getenv_ulong("wdt_timeout", 10, 300) *
+			       usec2ticks(1000*1000);
+#else
+	/* Unluckely the above code seems not working... most probably due the
+	 * fact we cannot read the environment too early during the boot! :'(
+	 * At the moment we prefere using a fixed timeout value and leave the
+	 * problem for future investigations.
+	 */
+	timeout_sec_in_ticks = 300 * usec2ticks(1000*1000);
+#endif
+	if ((timeout_sec_in_ticks > 0) && (tick > timeout_sec_in_ticks))
+		return;
+
+	/* Toggle the watchdog input to refresh it */
 	if (tick > last_tick + one_sec_in_ticks) {
 		last_tick = tick;
 		if (last) {
